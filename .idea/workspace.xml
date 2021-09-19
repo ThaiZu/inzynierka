@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28d081f0-d6c4-42d2-b948-19a3500ebbb3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +22,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -43,6 +45,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -70,7 +73,8 @@
       <workItem from="1627542339781" duration="637000" />
       <workItem from="1627685973143" duration="521000" />
       <workItem from="1629112495802" duration="403000" />
-      <workItem from="1632006013117" duration="2279000" />
+      <workItem from="1632006013117" duration="2930000" />
+      <workItem from="1632085410986" duration="259000" />
     </task>
     <servers />
   </component>
@@ -87,14 +91,20 @@
     </state>
     <state x="1220" y="279" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627542380021" />
     <state x="1220" y="279" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1629112900590" />
-    <state x="1274" y="456" key="NewPhpFileDialog" timestamp="1627515814112">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1274" y="1536" key="NewPhpFileDialog" timestamp="1632085642346">
+      <screen x="0" y="1080" width="1920" height="1040" />
     </state>
     <state x="1274" y="456" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627515814112" />
-    <state x="1148" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1627542369695">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1274" y="1536" key="NewPhpFileDialog/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1632085642346" />
+    <state x="926" y="1249" key="SettingsEditor" timestamp="1632085633409">
+      <screen x="0" y="1080" width="1920" height="1040" />
+    </state>
+    <state x="926" y="1249" key="SettingsEditor/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1632085633409" />
+    <state x="1148" y="1429" key="com.intellij.ide.util.TipDialog" timestamp="1632085469806">
+      <screen x="0" y="1080" width="1920" height="1040" />
     </state>
     <state x="1148" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627542369695" />
+    <state x="1148" y="1429" key="com.intellij.ide.util.TipDialog/0.1080.1920.1040/0.0.1920.1040@0.1080.1920.1040" timestamp="1632085469806" />
     <state x="136" y="784" key="run.anything.popup" timestamp="1632007102801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
