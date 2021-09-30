@@ -35,6 +35,7 @@ if($category->insert($category_name, $desc)){
     header("Location:{$htppPath}?r=succ");
 } else {
     header("Location:{$htppPath}?r=error");
+
 }
 
 
