@@ -57,4 +57,19 @@ class Product
         return false;
     }
 
+    public function select()
+    {
+        $sql = "SELECT * FROM {$this->table_name}";
+        $query = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+        $query->execute();
+        return $query;
+    }
+
+    public function getAssoc()
+    {
+        $query = $this->select();
+        $items = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $items;
+    }
+
 }

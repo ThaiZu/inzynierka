@@ -25,11 +25,18 @@ if(!isset($_POST['submit']))
 }
 
 
+$product_name = $_POST['product_name'];
+$quantity = $_POST['quantity'];
+$min_quantity = $_POST['min_quantity'];
+$unit = $_POST['unit'];
+$price = $_POST['price'];
+$category = $_POST['category'];
+
 
 require_once "../product.php";
 $product = new Product();
 
-if($product->insert('maka luksusowa', '60', '50', '1', "10.50", '1')){
+if($product->insert($product_name, $quantity, $min_quantity, $unit, $price, $category)){
     header("Location:{$htppPath}?r=succ");
 } else {
     header("Location:{$htppPath}?r=error");
