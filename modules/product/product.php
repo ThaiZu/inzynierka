@@ -72,4 +72,6 @@ class Product
         return $items;
     }
 
+    public function 
+
 }

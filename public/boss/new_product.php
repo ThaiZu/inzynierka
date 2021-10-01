@@ -42,38 +42,30 @@ $res = (@$_GET['r'] == "succ") ? "Dodano pomyślnie" : "Coś poszło nie tak";
                              <input class="form-control mb-4" type="text" id="prod_name" name="product_name" required>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label class="form-label" for="id_quantity">Zakupiona ilość</label>
                             <input class="form-control mb-4" type="number" id="id_quantity" name="quantity" required>
                         </div>
 
-                        <div class="col-md-3">
-                            <label class="form-label" for="id_min_quantity">Minimalna potrzebna ilość</label>
-                            <input class="form-control mb-4" type="number" id="id_min_quantity" name="min_quantity" required>
-                        </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-md-2">
                             <label class="form-label" for="id_unit">Jednostka</label>
-                            <select class="form-control" name="unit" id="id_unit">
+                            <select class="form-select" name="unit" id="id_unit">
                                 <?php
                                 foreach ($units as $item){
                                     echo "<option name='{$item['id']}'>{$item['unit_name']}</option>";
                                 }
                                 ?>
-
                             </select>
                         </div>
 
-                        <div class="col-md-4">
-                            <label class="form-label" for="id_price">Cena jednostkowa</label>
-                            <input class="form-control mb-4" type="number" id="id_price" name="price" required>
-                        </div>
 
-                        <div class="col-md-6">
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4">
                             <label class="form-label" for="id_category">Kategoria</label>
-                            <select class="form-control" name="category" id="id_category">
+                            <select class="form-select" name="category" id="id_category">
                                 <?php
                                 foreach ($categories as $item){
                                     echo "<option name='{$item['id']}'>{$item['category_name']}</option>";
@@ -81,7 +73,40 @@ $res = (@$_GET['r'] == "succ") ? "Dodano pomyślnie" : "Coś poszło nie tak";
                                 ?>
                             </select>
                         </div>
+
+
+                        <div class="col-md-3">
+                            <label class="form-label" for="id_price">Cena za opakowanie</label>
+                            <input class="form-control mb-4" type="number" id="id_price" step="0.01" name="price" required>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label" for="id_pricekg">Cena za kilogram/litr</label>
+                            <input class="form-control mb-4" type="number" id="id_pricekg" name="pricekg" required>
+                        </div>
+
+
                     </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="form-label" for="id_min_quantity">Minimalna potrzebna ilość</label>
+                            <input class="form-control mb-4" type="number" id="id_min_quantity" name="min_quantity" required>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label class="form-label" for="id_min_unit">Jednostka</label>
+                            <select class="form-select" name="min_unit" id="id_min_unit">
+                                <?php
+                                foreach ($units as $item){
+                                    echo "<option name='{$item['id']}'>{$item['unit_name']}</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+
+
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -94,5 +119,28 @@ $res = (@$_GET['r'] == "succ") ? "Dodano pomyślnie" : "Coś poszło nie tak";
         </div>
     </div>
 </main>
+
+<script>
+    const price = document.getElementById('id_price');
+    const result = document.getElementById('id_pricekg');
+    const quantity = document.getElementById('id_quantity');
+    const unit = document.getElementById('id_unit');
+
+    function inputHandler(e) {
+        if(unit.value === "szt"){
+            result.value = price.value;
+        } else {
+            console.log(price.value);
+
+            let amount = parseFloat((1000 / parseInt(quantity.value)) * Number(price.value));
+            console.log("amount",amount);
+            result.value = amount.toFixed(2);
+        }
+    }
+    price.addEventListener('change', inputHandler);
+    unit.addEventListener('change', inputHandler);
+
+
+</script>
 </body>
 </html>

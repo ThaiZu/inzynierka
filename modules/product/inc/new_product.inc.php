@@ -30,8 +30,14 @@ $quantity = $_POST['quantity'];
 $min_quantity = $_POST['min_quantity'];
 $unit = $_POST['unit'];
 $price = $_POST['price'];
+$pricekg = $_POST['pricekg'];
+$min_unit = $_POST['min_unit'];
 $category = $_POST['category'];
 
+if(!strcmp($unit, $min_unit))
+{
+
+}
 
 require_once "../product.php";
 $product = new Product();
