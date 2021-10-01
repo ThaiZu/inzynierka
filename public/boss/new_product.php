@@ -67,7 +67,7 @@ $res = (@$_GET['r'] == "succ") ? "Dodano pomyślnie" : "Coś poszło nie tak";
                         </div>
 
                         <div class="col-md-4">
-                            <label class="form-label" for="id_price">Cena zakupionego towaru</label>
+                            <label class="form-label" for="id_price">Cena jednostkowa</label>
                             <input class="form-control mb-4" type="number" id="id_price" name="price" required>
                         </div>
 
