@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 01 Paź 2021, 01:58
+-- Czas generowania: 01 Paź 2021, 15:04
 -- Wersja serwera: 10.4.11-MariaDB
 -- Wersja PHP: 8.0.3
 
@@ -68,10 +68,11 @@ CREATE TABLE `order_pos` (
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `product_name` varchar(255) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `min_quantity` int(11) NOT NULL,
+  `quantity` float NOT NULL,
+  `min_quantity` float NOT NULL,
   `id_unit` int(11) NOT NULL,
   `price` float NOT NULL,
+  `price_kg_l` float NOT NULL,
   `id_category` int(11) NOT NULL,
   `last_added` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -80,8 +81,8 @@ CREATE TABLE `products` (
 -- Zrzut danych tabeli `products`
 --
 
-INSERT INTO `products` (`id`, `product_name`, `quantity`, `min_quantity`, `id_unit`, `price`, `id_category`, `last_added`) VALUES
-(1, 'maka luksusowa', 30, 50, 1, 10.5, 1, '2021-10-01');
+INSERT INTO `products` (`id`, `product_name`, `quantity`, `min_quantity`, `id_unit`, `price`, `price_kg_l`, `id_category`, `last_added`) VALUES
+(1, 'maka luksusowa', 30, 50, 1, 10.5, 0, 1, '2021-10-01');
 
 -- --------------------------------------------------------
 
@@ -103,7 +104,8 @@ INSERT INTO `product_category` (`id`, `category_name`, `description`) VALUES
 (1, 'sypkie', ''),
 (2, 'nabiał', 'mleka, jajka, sery itp'),
 (3, 'mięso', ''),
-(4, 'inne', '');
+(4, 'inne', ''),
+(5, 'przyprawy', '');
 
 -- --------------------------------------------------------
 
@@ -113,10 +115,21 @@ INSERT INTO `product_category` (`id`, `category_name`, `description`) VALUES
 
 CREATE TABLE `recipe` (
   `id` int(11) NOT NULL,
-  `id_menu_pos` int(11) NOT NULL,
+  `recipe_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `recipe_products`
+--
+
+CREATE TABLE `recipe_products` (
+  `id` int(11) NOT NULL,
+  `id_recipe` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `unit` varchar(255) NOT NULL
+  `id_unit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -189,7 +202,9 @@ ALTER TABLE `order_pos`
 -- Indeksy dla tabeli `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_category` (`id_category`),
+  ADD KEY `id_unit` (`id_unit`);
 
 --
 -- Indeksy dla tabeli `product_category`
@@ -202,6 +217,15 @@ ALTER TABLE `product_category`
 --
 ALTER TABLE `recipe`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `recipe_products`
+--
+ALTER TABLE `recipe_products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_product` (`id_product`),
+  ADD KEY `id_recipe` (`id_recipe`),
+  ADD KEY `id_unit` (`id_unit`);
 
 --
 -- Indeksy dla tabeli `unit`
@@ -247,12 +271,18 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT dla tabeli `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT dla tabeli `recipe`
 --
 ALTER TABLE `recipe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `recipe_products`
+--
+ALTER TABLE `recipe_products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -266,6 +296,25 @@ ALTER TABLE `unit`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Ograniczenia dla zrzutów tabel
+--
+
+--
+-- Ograniczenia dla tabeli `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `product_category` (`id`),
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`id_unit`) REFERENCES `unit` (`id`);
+
+--
+-- Ograniczenia dla tabeli `recipe_products`
+--
+ALTER TABLE `recipe_products`
+  ADD CONSTRAINT `recipe_products_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `recipe_products_ibfk_2` FOREIGN KEY (`id_recipe`) REFERENCES `recipe` (`id`),
+  ADD CONSTRAINT `recipe_products_ibfk_3` FOREIGN KEY (`id_unit`) REFERENCES `unit` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
