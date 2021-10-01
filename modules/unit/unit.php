@@ -1,5 +1,6 @@
 <?php
 include_once ($_SERVER['DOCUMENT_ROOT']).'/inzynierka/modules/config/database.php';
+include_once ($_SERVER['DOCUMENT_ROOT']).'/inzynierka/modules/category/category.php';
 
 
 class Unit extends Category
