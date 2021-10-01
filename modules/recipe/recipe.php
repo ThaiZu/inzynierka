@@ -6,10 +6,8 @@ class Recipe
     private $db;
     private $table_name = "recipe";
 
-    public $id_menu_pos;
-    public $id_product;
-    public $quantity;
-    public $unit;
+    public $recipe_name;
+
 
     public function __construct()
     {
